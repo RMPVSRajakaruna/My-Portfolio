@@ -117,3 +117,32 @@ body {
                 transform: translateY(-5px);
             }
         }
+
+/* ---------- Portfolio grid sizing and image handling ---------- */
+/* Widen only the portfolio container on large screens */
+#portfolio .container {
+    max-width: 1600px; /* increase width; adjust as you like */
+}
+/* Fix the grid row size so row-span classes behave predictably.
+   This prevents a tall/narrow image from increasing a row's height. */
+#portfolio .container > .grid {
+    /* fixed row height for mosaic; controls card height */
+    grid-auto-rows: 320px;
+}
+
+/* Ensure each portfolio item fills the grid row height and the image
+   covers/crops the card instead of stretching the layout. */
+.portfolio-item {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+.portfolio-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crop to fill */
+}
+
+/* When a card uses Tailwind's row-span-2 it will span two of the fixed rows.
+   If you want a different visual span tweak grid-auto-rows instead of image sizes. */
